@@ -8,6 +8,7 @@
   --blue: #2f6ddd;
   --green: #67d66e;
   --purple: #343186;
+  --tiffany: #55d6d2;
   --radius: 8px;
   --safe-top: env(safe-area-inset-top, 0px);
   --header-height: 68px;
@@ -161,9 +162,11 @@ h1 {
 .spot-map-card,
 .spot-save-card {
   position: absolute;
-  border: 1px solid rgba(17, 17, 17, 0.08);
+  border: 2px solid rgba(85, 214, 210, 0.58);
   background: var(--white);
-  box-shadow: 0 18px 45px rgba(17, 17, 17, 0.08);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.78),
+    0 18px 45px rgba(17, 17, 17, 0.08);
 }
 
 .spot-photo-card {
@@ -242,10 +245,8 @@ h1 {
   overflow: hidden;
   border-radius: 16px;
   background:
-    linear-gradient(90deg, transparent 23px, rgba(47, 109, 221, 0.13) 24px 26px, transparent 27px),
-    linear-gradient(0deg, transparent 23px, rgba(103, 214, 110, 0.16) 24px 26px, transparent 27px),
-    #f4f8f4;
-  background-size: 52px 52px;
+    linear-gradient(to top, rgba(0, 0, 0, 0.18), rgba(255, 255, 255, 0.05)),
+    url("assets/map-topkapi.jpg") 48% 53% / cover;
 }
 
 .route,
@@ -254,9 +255,12 @@ h1 {
 }
 
 .route {
-  height: 5px;
+  height: 4px;
   border-radius: 999px;
   transform-origin: left center;
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.72),
+    0 9px 20px rgba(0, 0, 0, 0.22);
 }
 
 .route-one {
@@ -286,12 +290,14 @@ h1 {
 .map-dot {
   right: 28px;
   top: 46px;
-  width: 16px;
-  height: 16px;
-  border: 4px solid var(--white);
+  width: 18px;
+  height: 18px;
+  border: 5px solid var(--white);
   border-radius: 50%;
   background: #ff674d;
-  box-shadow: 0 9px 18px rgba(255, 103, 77, 0.3);
+  box-shadow:
+    0 0 0 7px rgba(255, 103, 77, 0.2),
+    0 9px 18px rgba(255, 103, 77, 0.3);
 }
 
 .spot-save-card {
@@ -340,112 +346,84 @@ h1 {
 
 .app-icon {
   position: relative;
-  display: grid;
-  place-items: center;
   width: 96px;
   height: 96px;
   margin: 0 auto 12px;
   border-radius: 22px;
-  border: 1px solid var(--line);
   overflow: hidden;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  background: #111111;
+  box-shadow: 0 14px 34px rgba(17, 17, 17, 0.1);
 }
 
-.app-icon span {
-  position: relative;
-  z-index: 1;
-}
-
-.icon-map {
-  background:
-    linear-gradient(90deg, transparent 22px, rgba(0, 0, 0, 0.1) 23px, transparent 24px),
-    linear-gradient(0deg, transparent 22px, rgba(0, 0, 0, 0.1) 23px, transparent 24px),
-    #daf16b;
-  background-size: 32px 32px;
-  border: 9px solid #151515;
-}
-
-.icon-route {
-  position: absolute;
-  left: 17px;
-  top: 43px;
-  width: 50px;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--ink);
-  transform: rotate(-20deg);
-}
-
-.icon-pin {
-  width: 25px;
-  height: 25px;
-  border-radius: 50% 50% 50% 0;
-  background: var(--ink);
-  transform: rotate(-45deg);
-}
-
-.icon-chat {
-  align-content: center;
-  gap: 8px;
-  background: #ffffff;
-}
-
-.chat-line {
+.app-icon img,
+.app-icon svg {
   display: block;
-  width: 48px;
-  height: 9px;
-  border-radius: 999px;
-  background: var(--ink);
 }
 
-.chat-line.short {
-  width: 34px;
-  justify-self: start;
-  margin-left: 22px;
+.app-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+  transition: transform 420ms ease;
 }
 
-.icon-chat strong {
+.app-icon::before,
+.app-icon::after {
+  content: "";
   position: absolute;
-  right: 18px;
-  bottom: 14px;
-  font-size: 28px;
-  line-height: 1;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
-.icon-save {
+.app-icon::before {
   background:
-    radial-gradient(circle at 50% 50%, #ffffff 0 10%, transparent 11%),
-    radial-gradient(circle at 50% 50%, #4b58ff 0 24%, #d34b4b 25% 43%, #4b58ff 44% 63%, transparent 64%),
-    #11131f;
+    radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.26), transparent 0 34%, transparent 35%),
+    linear-gradient(to top, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.12) 58%, rgba(255, 255, 255, 0.06));
 }
 
-.save-photo {
+.app-icon::after {
+  inset: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 17px;
+}
+
+.app-icon svg {
   position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
   width: 42px;
-  height: 54px;
-  border-radius: 12px;
-  background:
-    linear-gradient(to top, rgba(0, 0, 0, 0.34), transparent 58%),
-    linear-gradient(135deg, #dce6ec, #697fba 52%, #233142);
+  height: 42px;
+  padding: 9px;
+  border-radius: 15px;
+  color: var(--white);
+  background: rgba(17, 17, 17, 0.5);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  transform: translate(-50%, -50%);
 }
 
-.save-photo.one {
-  left: 18px;
-  top: 20px;
-  transform: rotate(-9deg);
+.action-item:hover .app-icon img {
+  transform: scale(1.12);
 }
 
-.save-photo.two {
-  right: 18px;
-  bottom: 15px;
-  transform: rotate(8deg);
+.icon-map img {
+  object-position: center;
 }
 
-.save-mark {
-  width: 34px;
-  height: 34px;
-  border: 7px solid rgba(255, 255, 255, 0.76);
-  border-radius: 50%;
-  background: #4b58ff;
+.icon-chat img {
+  object-position: center;
+}
+
+.icon-save img {
+  object-position: center;
 }
 
 .action-item h2 {
@@ -511,11 +489,12 @@ h1 {
   position: relative;
   padding: 54px 38px 0;
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 2px solid rgba(85, 214, 210, 0.5);
   border-radius: 16px;
   background:
     radial-gradient(circle at 74% 16%, rgba(88, 85, 255, 0.12), transparent 0 24%, transparent 25%),
     linear-gradient(#fbfbfb, #f8f8f8);
+  box-shadow: 0 18px 48px rgba(85, 214, 210, 0.12);
 }
 
 .product-frame::before {
@@ -534,7 +513,7 @@ h1 {
   grid-template-columns: 58px minmax(0, 1fr);
   min-height: 410px;
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(85, 214, 210, 0.42);
   border-radius: 14px 14px 0 0;
   background: var(--white);
 }
@@ -643,7 +622,7 @@ h1 {
 .photo-card span,
 .photo-meta,
 .request-bubble,
-.approval-pill {
+.location-pill {
   position: absolute;
   z-index: 1;
 }
@@ -690,7 +669,7 @@ h1 {
   font-weight: 650;
 }
 
-.approval-pill {
+.location-pill {
   right: 18px;
   bottom: 19px;
   padding: 7px 10px;
@@ -709,10 +688,8 @@ h1 {
   border: 1px solid var(--line);
   border-radius: 12px;
   background:
-    linear-gradient(90deg, transparent 22px, rgba(47, 109, 221, 0.11) 23px 25px, transparent 26px),
-    linear-gradient(0deg, transparent 22px, rgba(103, 214, 110, 0.14) 23px 25px, transparent 26px),
-    #f5f8f3;
-  background-size: 54px 54px;
+    linear-gradient(to top, rgba(0, 0, 0, 0.24), rgba(255, 255, 255, 0.02) 62%),
+    url("assets/map-karakoy.jpg") 49% 48% / cover;
 }
 
 .map-street,
@@ -721,9 +698,12 @@ h1 {
 }
 
 .map-street {
-  height: 5px;
+  height: 4px;
   border-radius: 999px;
   transform-origin: left center;
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.7),
+    0 10px 22px rgba(0, 0, 0, 0.22);
 }
 
 .street-one {
@@ -890,11 +870,19 @@ h1 {
   border-bottom: 1px solid rgba(154, 154, 154, 0.45);
 }
 
+.site-credit {
+  flex-basis: 100%;
+  margin: -8px 0 0;
+  color: #9a9a9a;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
 .ambient-floater {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 24;
+  z-index: 70;
   width: var(--floater-size);
   --floater-size: 82px;
   --floater-pad: 18px;
@@ -932,11 +920,14 @@ h1 {
   aspect-ratio: 1;
   padding: 5px;
   border-radius: 20px;
+  border: 2px solid rgba(85, 214, 210, 0.72);
   background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.9),
+    0 12px 30px rgba(0, 0, 0, 0.1);
   transition:
-    box-shadow 180ms ease,
-    transform 180ms ease;
+    box-shadow 240ms ease,
+    transform 240ms ease;
 }
 
 .ambient-floater img {
@@ -967,8 +958,8 @@ h1 {
   pointer-events: none;
   transform: translate(-50%, 7px) scale(0.94);
   transition:
-    opacity 160ms ease,
-    transform 160ms ease;
+    opacity 260ms ease,
+    transform 360ms ease;
   white-space: nowrap;
 }
 
@@ -983,24 +974,19 @@ h1 {
   transform: translate(-50%, -6px) rotate(45deg);
 }
 
-.ambient-floater.is-held,
-.ambient-floater.is-held img {
+.ambient-floater.is-loved img {
   animation-play-state: paused;
 }
 
-.ambient-floater.is-held .ambient-floater-frame {
-  transform: scale(1.08);
+.ambient-floater.is-loved .ambient-floater-frame {
+  animation: floater-love-pause 2s ease-in-out both;
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.16);
 }
 
-.ambient-floater.is-held .floater-bubble,
-.ambient-floater.is-released .floater-bubble {
+.ambient-floater.is-loved .floater-bubble {
+  animation: floater-bubble-breathe 2s ease-in-out both;
   opacity: 1;
   transform: translate(-50%, 0) scale(1);
-}
-
-.ambient-floater.is-released .ambient-floater-frame {
-  transform: scale(0.98);
 }
 
 @keyframes floater-tilt {
@@ -1011,6 +997,35 @@ h1 {
 
   50% {
     transform: rotate(5deg);
+  }
+}
+
+@keyframes floater-love-pause {
+  0% {
+    transform: scale(1);
+  }
+
+  18% {
+    transform: scale(1.08) translateY(-2px);
+  }
+
+  70% {
+    transform: scale(1.05) translateY(1px);
+  }
+
+  100% {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes floater-bubble-breathe {
+  0%,
+  100% {
+    transform: translate(-50%, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -3px) scale(1.02);
   }
 }
 
@@ -1095,32 +1110,16 @@ h1 {
     border-radius: 18px;
   }
 
-  .chat-line {
-    width: 36px;
-    height: 7px;
+  .app-icon::after {
+    inset: 6px;
+    border-radius: 14px;
   }
 
-  .chat-line.short {
-    width: 26px;
-    margin-left: 18px;
-  }
-
-  .icon-chat strong {
-    right: 14px;
-    bottom: 10px;
-    font-size: 22px;
-  }
-
-  .save-photo {
-    width: 32px;
-    height: 42px;
-    border-radius: 10px;
-  }
-
-  .save-mark {
-    width: 27px;
-    height: 27px;
-    border-width: 5px;
+  .app-icon svg {
+    width: 34px;
+    height: 34px;
+    padding: 7px;
+    border-radius: 12px;
   }
 
   .project-heading {
@@ -1177,7 +1176,9 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ambient-floater img {
+  .ambient-floater img,
+  .ambient-floater.is-loved .ambient-floater-frame,
+  .ambient-floater.is-loved .floater-bubble {
     animation: none;
   }
 }

@@ -40,13 +40,14 @@ if (form && emailInput && formNote) {
 }
 
 if (floater) {
-  let releaseTimer = 0;
-  let x = 18;
-  let y = 96;
-  let velocityX = 0.11;
-  let velocityY = 0.08;
+  const loveVisibleMs = 2000;
+  let loveTimer = 0;
+  let x = 46;
+  let y = 230;
+  let velocityX = 0.055;
+  let velocityY = 0.04;
   let lastFrame = 0;
-  let isHeld = false;
+  let isShowingLove = false;
   let reducedMotion = false;
   const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -57,12 +58,15 @@ if (floater) {
     const safeTop = Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--safe-top")) || 0;
     const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const bubbleClearance = Math.min(32, Math.max(18, size * 0.35));
+    const headlineClearance = Math.min(170, Math.max(108, viewportHeight * 0.18));
+    const minY = header + safeTop + pad + headlineClearance;
 
     return {
-      minX: pad,
-      minY: header + safeTop + pad,
-      maxX: Math.max(pad, viewportWidth - size - pad),
-      maxY: Math.max(header + safeTop + pad, viewportHeight - size - pad),
+      minX: pad + bubbleClearance,
+      minY,
+      maxX: Math.max(pad + bubbleClearance, viewportWidth - size - pad - bubbleClearance),
+      maxY: Math.max(minY, viewportHeight - size - pad),
     };
   }
 
@@ -90,7 +94,7 @@ if (floater) {
     const elapsed = Math.min(timestamp - lastFrame, 34);
     lastFrame = timestamp;
 
-    if (!isHeld && !reducedMotion) {
+    if (!isShowingLove && !reducedMotion) {
       const bounds = getBounds();
       x += velocityX * elapsed;
       y += velocityY * elapsed;
@@ -111,44 +115,34 @@ if (floater) {
     window.requestAnimationFrame(moveFloater);
   }
 
-  function holdFloater() {
-    window.clearTimeout(releaseTimer);
-    isHeld = true;
-    clampPosition();
-    renderFloater();
-    floater.classList.remove("is-released");
-    floater.classList.add("is-held");
-    floater.setAttribute("aria-label", "ask loves you");
-  }
-
-  function releaseFloater() {
-    if (!isHeld) {
+  function hideLove() {
+    if (!isShowingLove) {
       return;
     }
 
-    isHeld = false;
-    velocityX = Math.sign(velocityX || 1) * 0.16;
-    velocityY = Math.sign(velocityY || 1) * 0.11;
-    floater.classList.remove("is-held");
-    floater.classList.add("is-released");
-    floater.setAttribute("aria-label", "ask loves you, floating away");
+    isShowingLove = false;
+    floater.classList.remove("is-loved");
+    floater.setAttribute("aria-label", "Show the ask loves you message");
+  }
 
-    releaseTimer = window.setTimeout(() => {
-      floater.classList.remove("is-released");
-      floater.setAttribute("aria-label", "Press the floating ask picture");
-    }, 1100);
+  function showLove() {
+    window.clearTimeout(loveTimer);
+    isShowingLove = true;
+    clampPosition();
+    renderFloater();
+    floater.classList.remove("is-loved");
+    // Force a reflow so repeated taps restart the 2-second CSS animation.
+    void floater.offsetWidth;
+    floater.classList.add("is-loved");
+    floater.setAttribute("aria-label", "ask loves you");
+
+    loveTimer = window.setTimeout(hideLove, loveVisibleMs);
   }
 
   floater.addEventListener("pointerdown", (event) => {
-    holdFloater();
-
-    if (floater.setPointerCapture) {
-      floater.setPointerCapture(event.pointerId);
-    }
+    event.preventDefault();
+    showLove();
   });
-
-  floater.addEventListener("pointerup", releaseFloater);
-  floater.addEventListener("pointercancel", releaseFloater);
 
   floater.addEventListener("keydown", (event) => {
     if (event.key !== " " && event.key !== "Enter") {
@@ -156,19 +150,11 @@ if (floater) {
     }
 
     event.preventDefault();
-
-    if (!isHeld) {
-      holdFloater();
-    }
-  });
-
-  floater.addEventListener("keyup", (event) => {
-    if (event.key !== " " && event.key !== "Enter") {
+    if (event.repeat) {
       return;
     }
 
-    event.preventDefault();
-    releaseFloater();
+    showLove();
   });
 
   window.addEventListener("resize", () => {

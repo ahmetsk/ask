@@ -9,6 +9,7 @@ Static coming-soon website for `ask.pictures`.
 - `script.js` - small interactions and email waitlist mailto flow
 - `assets/floating-ask-image.jpg` - floating image used in the animated page effect
 - `assets/place-cafe.jpg`, `assets/place-rooftop.jpg`, `assets/place-gallery.jpg` - downloaded CC BY 4.0 photos used in the app mockup
+- `assets/map-topkapi.jpg`, `assets/map-karakoy.jpg` - map screenshots used in the navigation cards
 - `.htaccess` - cPanel/Apache security headers and directory-listing protection
 
 ## cPanel upload
@@ -18,6 +19,7 @@ Static coming-soon website for `ask.pictures`.
 3. Open the `public_html` folder for `ask.pictures`.
 4. Enable hidden files in File Manager settings if `.htaccess` is not visible.
 5. Upload `index.html`, `styles.css`, `script.js`, `.htaccess`, and the full `assets` folder.
+   Do not upload hidden `.DS_Store` files if cPanel shows them.
 6. Visit `https://ask.pictures`.
 
 Keep `.git`, `.DS_Store`, and `output` out of `public_html`; they are local project files and should not be uploaded.
