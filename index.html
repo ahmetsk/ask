@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ask.pictures - Ask the Spot</title>
+    <meta
+      name="description"
+      content="ask.pictures is a coming-soon photo app for asking where a place is, how it was, and saving spots you want to visit."
+    />
+    <meta property="og:title" content="ask.pictures - Ask the Spot" />
+    <meta
+      property="og:description"
+      content="A photo-first app for asking about places and saving the spots you discover. Coming soon."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ask.pictures" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; form-action 'self'; frame-src 'none'"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="ask.pictures home">
+        <span>ask.pictures</span>
+      </a>
+
+      <nav class="social-links" aria-label="Ahmet Selim social links">
+        <a
+          class="social-link"
+          href="https://www.instagram.com/ahmetselimks/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram: ahmetselimks"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <circle cx="17.5" cy="6.5" r="1.2"></circle>
+          </svg>
+        </a>
+        <a
+          class="social-link"
+          href="https://tr.linkedin.com/in/ahmet-selim-koytak-082421337"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn: Ahmet Selim Koytak"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+            <path d="M8 10v7"></path>
+            <path d="M8 7.2v.1"></path>
+            <path d="M12 17v-4.1"></path>
+            <path d="M12 12.9c0-1.5 1-2.5 2.4-2.5 1.6 0 2.6 1.1 2.6 3V17"></path>
+          </svg>
+        </a>
+      </nav>
+    </header>
+
+    <button
+      class="ambient-floater"
+      type="button"
+      data-floater
+      aria-label="Press the floating ask picture"
+      aria-describedby="floater-message"
+    >
+      <span class="ambient-floater-frame">
+        <img src="assets/floating-ask-image.jpg" alt="" />
+        <span class="floater-bubble" id="floater-message">ask loves you</span>
+      </span>
+    </button>
+
+    <main id="top" class="page-shell">
+      <section class="intro-section" aria-labelledby="hero-title">
+        <div class="intro-text">
+          <p class="maker">by Ahmet Selim</p>
+          <h1 id="hero-title">Ask the place behind the picture.</h1>
+          <div class="intro-copy">
+            <p>
+              ask.pictures is for the places people almost gatekeep by
+              accident. Tap a photo, ask for the spot, and let the person who
+              posted it choose what they want to share.
+            </p>
+            <p>
+              No public location dumping. No awkward comment section hunt. Just
+              real recommendations from photos, saved before they disappear
+              into your feed.
+            </p>
+          </div>
+        </div>
+
+        <div class="spot-graphic" aria-hidden="true">
+          <div class="spot-photo-card">
+            <span class="spot-photo-label">near Karakoy</span>
+            <span class="spot-hotspot"></span>
+          </div>
+          <div class="spot-question-card">
+            <span>Where is this?</span>
+            <strong>Waiting for owner approval</strong>
+          </div>
+          <div class="spot-map-card">
+            <span class="route route-one"></span>
+            <span class="route route-two"></span>
+            <span class="route route-three"></span>
+            <span class="map-dot"></span>
+          </div>
+          <div class="spot-save-card">
+            <span></span>
+            <span></span>
+            <strong>saved</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="quick-actions" aria-labelledby="actions-title">
+        <p id="actions-title" class="section-label">Ask the Spot</p>
+        <div class="action-grid">
+          <article class="action-item">
+            <div class="app-icon icon-map" aria-hidden="true">
+              <span class="icon-route"></span>
+              <span class="icon-pin"></span>
+            </div>
+            <h2>Where?</h2>
+            <p>Request the exact spot without forcing it into public view.</p>
+          </article>
+
+          <article class="action-item">
+            <div class="app-icon icon-chat" aria-hidden="true">
+              <span class="chat-line short"></span>
+              <span class="chat-line"></span>
+              <strong>?</strong>
+            </div>
+            <h2>How?</h2>
+            <p>Ask about the vibe, price, crowd, coffee, timing, or view.</p>
+          </article>
+
+          <article class="action-item">
+            <div class="app-icon icon-save" aria-hidden="true">
+              <span class="save-photo one"></span>
+              <span class="save-photo two"></span>
+              <span class="save-mark"></span>
+            </div>
+            <h2>Save</h2>
+            <p>Keep the places that feel worth visiting in one clean list.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="project-section" aria-labelledby="project-title">
+        <div class="project-heading">
+          <h2 id="project-title">ask.pictures</h2>
+          <span>Photo location app</span>
+        </div>
+        <p>
+          A photo should be able to turn into a plan. Ask where it is, ask what
+          it was like, or save it for later. The location stays private until
+          the person who posted the picture says yes.
+        </p>
+        <a class="text-link" href="#waitlist">Get notified</a>
+
+        <div class="product-frame" aria-label="ask.pictures app preview">
+          <div class="app-window">
+            <aside class="app-rail" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </aside>
+            <div class="app-content">
+              <div class="app-toolbar">
+                <strong>Places</strong>
+                <button type="button">Ask</button>
+              </div>
+              <div class="photo-board">
+                <div class="photo-card photo-card-large">
+                  <div class="photo-meta">
+                    <span>Mina shared this</span>
+                    <strong>Cafe in Galata</strong>
+                  </div>
+                  <div class="request-bubble">Where is this?</div>
+                  <div class="approval-pill">owner approval</div>
+                </div>
+                <div class="mini-map-panel" aria-hidden="true">
+                  <span class="map-street street-one"></span>
+                  <span class="map-street street-two"></span>
+                  <span class="map-street street-three"></span>
+                  <span class="map-pin-small"></span>
+                  <strong>shared after yes</strong>
+                </div>
+                <div class="ask-panel">
+                  <button type="button" data-option="where">Where is this?</button>
+                  <button type="button" data-option="how">How was it?</button>
+                  <button type="button" data-option="save">Save Spot</button>
+                </div>
+                <div class="photo-card photo-card-gallery">
+                  <span>Gallery</span>
+                </div>
+                <div class="photo-card photo-card-rooftop">
+                  <span>Rooftop</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="waitlist" class="waitlist-section" aria-labelledby="waitlist-title">
+        <h2 id="waitlist-title">Coming soon.</h2>
+        <p>
+          The app is still being built. Send an early-interest email and this
+          list will be used when the first test version is ready.
+        </p>
+
+        <form class="waitlist-form" aria-label="Early access email form">
+          <label for="email">Email address</label>
+          <div class="form-row">
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              maxlength="254"
+              placeholder="you@example.com"
+              required
+            />
+            <button type="submit">Notify me</button>
+          </div>
+          <p class="form-note" id="form-note">
+            This opens an email draft to hello@ask.pictures.
+          </p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-shell footer-inner">
+        <span>ask.pictures</span>
+        <span>App coming soon.</span>
+        <nav class="social-links footer-social" aria-label="Social links">
+          <a
+            class="social-link"
+            href="https://www.instagram.com/ahmetselimks/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram: ahmetselimks"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <circle cx="17.5" cy="6.5" r="1.2"></circle>
+            </svg>
+          </a>
+          <a
+            class="social-link"
+            href="https://tr.linkedin.com/in/ahmet-selim-koytak-082421337"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn: Ahmet Selim Koytak"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+              <path d="M8 10v7"></path>
+              <path d="M8 7.2v.1"></path>
+              <path d="M12 17v-4.1"></path>
+              <path d="M12 12.9c0-1.5 1-2.5 2.4-2.5 1.6 0 2.6 1.1 2.6 3V17"></path>
+            </svg>
+          </a>
+        </nav>
+        <p class="photo-credits">
+          Photos:
+          <a
+            href="https://commons.wikimedia.org/wiki/File:Istanbul_-_B%C3%BCy%C3%BCk_Valide_Han_Cafe.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Jorge Franganillo</a>,
+          <a
+            href="https://commons.wikimedia.org/wiki/File:Istanbul_-_Ortak%C3%B6y_-_2025.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Jorge Franganillo</a>,
+          <a
+            href="https://commons.wikimedia.org/wiki/File:Dunedin_Public_Art_Gallery_-_interior_02.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >L Maule</a>
+          / CC BY 4.0.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
